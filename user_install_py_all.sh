@@ -1,14 +1,5 @@
 #!/bin/bash
 
-python3 IsInVirtual.py
-exit_code=$?
-
-if [ $exit_code != 1 ]
-  then
-    echo "This must be run from an activated Virtual environment. None currently activated!"
-    exit 1
-fi
-
 echo Installing all required packages
 
 pip3 install wheel

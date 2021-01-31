@@ -18,8 +18,10 @@ python3 -m venv --system-site-packages $1
 # go back to original directory
 cd "$_d"
 
+mkdir ../$1/scripts
+
 echo Copying in template files
-cp -R venv_template_files/* ../$1/
+cp -R * ../$1/scripts
 
 # root folder for user files that are checked in the source control
 mkdir ../$1/main
