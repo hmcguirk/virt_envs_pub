@@ -9,3 +9,15 @@ if [ "$EUID" -ne 0 ]
 fi
 
 apt -yq install bash python3-testresources git vim python3-venv
+
+python3 -m pip install --upgrade pip
+
+mkdir -p /.local/bin
+mkdir -p /.cache/pip
+
+chmod a+rwx /.local/bin
+chmod a+rwx /.cache/pip
+
+export PATH=/.local/bin:$PATH
+echo PATH=/.local/bin:$PATH >> /etc/profile
+

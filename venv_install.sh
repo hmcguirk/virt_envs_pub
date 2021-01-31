@@ -9,5 +9,5 @@ if [ $exit_code != 1 ]
     exit 1
 fi
  
-./user_install_py_all.sh
+./user_install.sh
 

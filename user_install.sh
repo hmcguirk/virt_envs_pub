@@ -2,6 +2,9 @@
 
 echo Installing all required packages
 
+# needed when run as a docker user without login shell reading /etc/profile
+export PATH=/.local/bin:$PATH
+
 pip3 install wheel
 pip3 install --upgrade tensorflow
 pip3 install keras
@@ -15,6 +18,4 @@ pip3 install -q git+https://github.com/tensorflow/docs
 pip3 install psutil
 pip3 install ipython
 pip3 install jupyter
-
-#dotnet interactive jupyter install
 
