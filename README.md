@@ -48,6 +48,7 @@ bash set to manually installed.
 ```
 
 hugh@Linux:~/repos/my_env_01/scripts$ **cd ..**
+
 hugh@Linux:~/repos/my_env_01$ **source bin/activate**
 
 **(my_env_01)** hugh@Linux:~/repos/my_env_01$ **cd scripts**
