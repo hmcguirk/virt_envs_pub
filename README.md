@@ -1,6 +1,8 @@
-# Virtual Environments Helper - scripts include base backages for TensorFlow development
+# Docker & Virtual Environments Helpers - scripts include base backages for TensorFlow development
 
-## Example Usage:
+## VENV (Virtual Environment)
+
+### Example Usage:
 
 hugh@Linux:~/repos/virt_envs_pub$ **ll ../**
 ```
@@ -26,13 +28,31 @@ drwxrwxr-x 8 hugh hugh 4096 Jan 21 13:55 my_env_01/
 drwxrwxr-x 4 hugh hugh 4096 Jan 21 13:51 virt_envs_pub/
 ```
 
-hugh@Linux:~/repos/virt_envs_pub$ **cd ../my_env_01/**
+hugh@Linux:~/repos/virt_envs_pub$ **cd ../my_env_01/scripts**
 
+hugh@LegionLinux:~/repos/my_env_01/scripts$ **./sudo_system_install_prereq.sh**
+
+```
+[sudo] password for hugh: 
+Installing all system prerequisites (These are not part of any virtual environment)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+git is already the newest version (1:2.25.1-1ubuntu3).
+python3-testresources is already the newest version (2.0.0-3).
+vim is already the newest version (2:8.1.2269-1ubuntu5).
+python3-venv is already the newest version (3.8.2-0ubuntu2).
+bash is already the newest version (5.0-6ubuntu1.1).
+bash set to manually installed.
+0 to upgrade, 0 to newly install, 0 to remove and 0 not to upgrade.
+```
+
+hugh@Linux:~/repos/my_env_01/scripts$ **cd ..**
 hugh@Linux:~/repos/my_env_01$ **source bin/activate**
 
-**(my_env_01)** hugh@Linux:~/repos/my_env_01$ **cd venv_scripts/**
+**(my_env_01)** hugh@Linux:~/repos/my_env_01$ **cd scripts**
 
-(my_env_01) hugh@Linux:~/repos/my_env_01/venv_scripts$ **./install_all_to_virtual_env.sh**
+(my_env_01) hugh@Linux:~/repos/my_env_01/scripts$ **./venv_install.sh**
 
 ```
 Installing all required packages
@@ -50,7 +70,7 @@ Collecting grpcio~=1.32.0
 Successfully installed Send2Trash-1.5.0 argon2-cffi-20.1.0 async-generator-1.10 attrs-20.3.0 bleach-3.2.2 cffi-1.14.4 defusedxml-0.6.0 ipykernel-5.4.3 ipywidgets-7.6.3 jinja2-2.11.2 jsonschema-3.2.0 jupyter-1.0.0 jupyter-client-6.1.11 jupyter-console-6.2.0 jupyter-core-4.7.0 jupyterlab-pygments-0.1.2 jupyterlab-widgets-1.0.0 mistune-0.8.4 nbclient-0.5.1 nbconvert-6.0.7 nbformat-5.1.2 nest-asyncio-1.4.3 notebook-6.2.0 pandocfilters-1.4.3 prometheus-client-0.9.0 ptyprocess-0.7.0 pycparser-2.20 pyrsistent-0.17.3 pyzmq-21.0.1 qtconsole-5.0.1 qtpy-1.9.0 terminado-0.9.2 testpath-0.4.4 tornado-6.1 webencodings-0.5.1 widgetsnbextension-3.5.1
 ```
 
-(my_env_01) hugh@Linux:~/repos/my_env_01/venv_scripts$ **./test_tensorflow.sh**
+(my_env_01) hugh@Linux:~/repos/my_env_01/scripts$ **./test_tensorflow.sh**
 
 ```
 Tesing TensorFlow
@@ -86,7 +106,7 @@ coreClock: 1.2GHz coreCount: 30 deviceMemorySize: 5.79GiB deviceMemoryBandwidth:
 tf.Tensor(-1379.8076, shape=(), dtype=float32)
 ```
 
-(my_env_01) hugh@Linux:~/repos/my_env_01/venv_scripts$ **cd ../main/**
+(my_env_01) hugh@Linux:~/repos/my_env_01/scripts$ **cd ../main/**
 
 (my_env_01) hugh@Linux:~/repos/my_env_01/main$ **ll**
 
@@ -101,3 +121,6 @@ drwxrwxr-x 9 hugh hugh 4096 Jan 21 13:59 ../
 
 hugh@Linux:~/repos/my_env_01/main$
 
+## Docker (Container)
+
+### Example Usage:
