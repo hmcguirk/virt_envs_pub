@@ -14,9 +14,11 @@ python3 -m pip install --upgrade pip
 
 mkdir -p /.local/bin
 mkdir -p /.cache/pip
+mkdir -p /.config/matplotlib
 
 chmod a+rwx /.local/bin
 chmod a+rwx /.cache/pip
+chmod a+rwx /.config/matplotlib
 
 export PATH=/.local/bin:$PATH
 echo PATH=/.local/bin:$PATH >> /etc/profile
