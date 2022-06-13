@@ -67,5 +67,9 @@ echo ############
 echo Starting Jupyter notbook
 echo ############
 
-docker exec -it -u$(id -u):$(id -g) -w /main $1 jupyter notebook --notebook-dir=/main --ip 0.0.0.0 --no-browser --allow-root
+echo -e '#!/bin/bash \n /usr/bin/command args'  > start_jupyter.sh
+echo docker exec -it -u$(id -u):$(id -g) -w /main $1 jupyter notebook --notebook-dir=/main --ip 0.0.0.0 --no-browser --allow-root >> start_jupyter.sh
+chmod +x start_jupyter.sh
+./start_jupyter.sh
+
 
