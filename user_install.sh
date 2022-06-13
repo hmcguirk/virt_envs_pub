@@ -6,7 +6,7 @@ echo Installing all required packages
 export PATH=/.local/bin:$PATH
 
 pip3 install wheel
-pip3 install --upgrade tensorflow==2.5.0
+pip3 install --upgrade tensorflow #==2.5.0
 pip3 install keras
 pip3 install tensorflow-addons
 pip3 install tensorflow_hub
