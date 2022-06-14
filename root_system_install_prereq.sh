@@ -8,9 +8,10 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-apt -yq install bash python3-testresources git vim python3-venv python3-pip
+apt update
 
-#python3 -m pip install --upgrade pip
+apt -yq install bash python3-testresources git vim python3-venv python3-pip
+python3 -m pip install --upgrade pip
 
 mkdir -p /.local/bin
 mkdir -p /.cache/pip
