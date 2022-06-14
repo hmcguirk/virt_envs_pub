@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ -z "$1" ] || [ -z "$2" ]
+if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]
   then
-    echo "Usage: user_init_container.sh <name of container> <base folder name>"
+    echo "Usage: user_init_container.sh <name of container> <base folder name> <port>"
     exit 1
 fi
 
@@ -32,21 +32,26 @@ cd "$_d"
 mkdir ../$2/scripts
 
 echo Copying in template files
-cp -R * ../$2/scripts
+cp * ../$2/scripts
 
 # root folder for user files that are checked in the source control
 mkdir ../$2/main
 
+mkdir ../$2/main/test
+cp main_test/* ../$2/main/test
+
 
 echo ############
-echo Starting new container "$1"
+echo Starting new container "$1" on :$3
 echo ############
 
 cd ../$2/scripts
 
 DOCKER_IMG=tensorflow/tensorflow:latest-gpu-jupyter
 
-docker run --name $1 -d --gpus all -it -v $PWD:/scripts -v $PWD/../main:/main -w /main -p 8888:8888 $DOCKER_IMG bash
+docker run --name $1 -d --gpus all -it -v $PWD:/scripts -v $PWD/../main:/main -w /main -p $3:$3 $DOCKER_IMG bash
+
+#docker build --network host
 
 
 echo ############
@@ -64,12 +69,11 @@ docker exec -it -u$(id -u):$(id -g) -w /main $1 /scripts/user_install.sh
 
 
 echo ############
-echo Starting Jupyter notbook
+echo Creating container start script: ../$2/scripts/start_jupyter_$1.sh
+echo
 echo ############
 
-echo -e '#!/bin/bash \n /usr/bin/command args'  > start_jupyter.sh
-echo docker exec -it -u$(id -u):$(id -g) -w /main $1 jupyter notebook --notebook-dir=/main --ip 0.0.0.0 --no-browser --allow-root >> start_jupyter.sh
-chmod +x start_jupyter.sh
-./start_jupyter.sh
-
-
+echo -e '#!/bin/bash'  > start_jupyter_$1.sh
+echo docker start $1 >> start_jupyter_$1.sh
+echo docker exec -it -u$(id -u):$(id -g) -w /main $1 jupyter notebook --notebook-dir=/main --ip 0.0.0.0 --port=$3 --no-browser --allow-root >> start_jupyter_$1.sh
+chmod +x start_jupyter_$1.sh
