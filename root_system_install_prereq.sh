@@ -10,7 +10,7 @@ fi
 
 apt update
 
-apt -yq install bash python3-testresources git vim python3-venv python3-pip iputils-ping
+apt -yq install bash python3-testresources git vim python3-venv python3-pip iputils-ping graphviz
 python3 -m pip install --upgrade pip
 
 mkdir -p /.local/bin

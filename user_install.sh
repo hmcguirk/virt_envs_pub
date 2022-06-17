@@ -18,4 +18,5 @@ pip3 install -q git+https://github.com/tensorflow/docs
 pip3 install psutil
 pip3 install ipython
 pip3 install jupyter
+pip3 install pydot
 

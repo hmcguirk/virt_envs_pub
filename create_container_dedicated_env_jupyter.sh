@@ -51,8 +51,6 @@ DOCKER_IMG=tensorflow/tensorflow:latest-gpu-jupyter
 
 docker run --name $1 -d --gpus all -it -v $PWD:/scripts -v $PWD/../main:/main -w /main -p $3:$3 $DOCKER_IMG bash
 
-#docker build --network host
-
 
 echo ############
 echo Installing container-system prerequisites, as container-root
